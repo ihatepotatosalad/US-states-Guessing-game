@@ -14,11 +14,13 @@ game_is_on = True
 while game_is_on:
     answer_state = screen.textinput(
         title=f' {state.score}/50 Guess a state', prompt='Guess one of the states').title()
-    state.check_answer(answer_state)
+    if answer_state != 'Exit':
+        state.check_answer(answer_state)
+    else:
+        state.create_csv()
+        game_is_on = False
     if len(state.states_guessed) == 50:
         print('you win')
         game_is_on = False
+        state.create_csv()
         screen.title('YOU WIN!')
-
-
-screen.exitonclick()

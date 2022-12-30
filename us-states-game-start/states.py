@@ -37,3 +37,13 @@ class States(Turtle):
 
         new_state.goto(cord)
         new_state.write(f'{answer}')
+
+    def create_csv(self):
+        missed_states = []
+        for i in self.states_to_use:
+            if i not in self.states_guessed:
+                missed_states.append(i)
+        dict_send = {
+            'states': [missed_states]
+        }
+        pandas.Series(dict_send).to_csv('missed_states.csv')

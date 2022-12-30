@@ -12,6 +12,7 @@ class States(Turtle):
         self.states_to_use = data.state.values
 
     def check_answer(self, answer):
+        """Takes a string argument and compares it to data in csv to confirm if its a match"""
 
         if answer in self.states_to_use:
             if answer in self.states_guessed:
